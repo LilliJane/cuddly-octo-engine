@@ -1,8 +1,18 @@
 
-$("#input").keyup(function(event){
+$("#text_input").keyup(function(event){
     if(event.keyCode == 13){
     	process();
     }
+});
+
+$(".c-dropdown__option").click(function(elem) {
+	$(".model").each(function(index) {
+		$(this).css('color', 'white');
+	});
+	$(this).css('color', 'red');
+	$("#engine_label").text("Processing with : " + $(this).text());
+	engine = $(this).text().toLowerCase();
+	$("#engine_label").css("color", "white");
 });
 
 const displacy = new displaCy('http://localhost:4848', {
@@ -29,7 +39,7 @@ const parse = {
     ]
 };
 
-console.log(displacy)
+var engine = "spacy";
 
 show_details = function(word, tokens) {
 	$.each(tokens, function(index, token) {
@@ -41,11 +51,12 @@ show_details = function(word, tokens) {
 }
 
 process = function() {
-	text_to_process = $("#input").val();
+	text_to_process = $("#text_input").val();
 	if (text_to_process !== undefined && text_to_process.length > 0) {
 		
 		$.post('/parse', {
-			"input": text_to_process
+			"input": text_to_process,
+			"engine": engine
 		}).then(function(parsed) {
 			console.log(parsed.data)
 			displacy.render(parsed.data, {

@@ -164,7 +164,9 @@ ol {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
+    user-select: none;
+    font-size: 1.25rem;
+    color: grey;
 }
 
 .c-input__field {
@@ -175,7 +177,7 @@ ol {
     background: transparent;
     color: white;
     line-height: 1;
-    width: 100%
+    width: 100%;
 }
 
 .c-input__field.c-input__field--area {
@@ -283,8 +285,12 @@ ol {
 .c-dropdown__trigger:checked+.c-dropdown {
     display: block;
     z-index: 10
+    color: red;
 }
 
+.c-dropdown__option:checked {
+    color: red;
+}
 .c-dropdown__option {
     display: -webkit-box;
     display: -ms-flexbox;

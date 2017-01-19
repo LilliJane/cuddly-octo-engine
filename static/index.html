@@ -5,9 +5,22 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <menu class="c-input c-input--full u-text-medium">
-            <input type="text" id="input" class="c-input__field">
+            <input type="text" id="text_input" class="c-input__field" placeholder="Input text">
         </menu>
-
+        <menu class="c-input">
+            <label for="model" id="engine_label" class="c-input__label"> Choose processing engine (default: Spacy)</label>
+            <input id="model" type="checkbox" aria-hidden="true" class="c-dropdown__trigger">
+            <ul class="c-dropdown u-text-small">
+                <li>
+                    <input type="radio" value="spacy" class="c-dropdown__trigger">
+                    <label class="c-dropdown__option model">Spacy</label>
+                </li>
+                <li>
+                    <input type="radio" value="google" class="c-dropdown__trigger">
+                    <label class="c-dropdown__option model">Google</label>
+                </li>
+            </ul>
+        </menu>
     </head>
 
     <body>
