@@ -51,6 +51,8 @@ preshed==0.46.4
 protobuf==3.1.0.post1
 pyasn1==0.1.9
 pyasn1-modules==0.0.8
+pysolr==3.6.0
+requests==2.12.5
 rsa==3.4.2
 semver==2.7.4
 six==1.10.0
@@ -60,4 +62,5 @@ thinc==6.2.0
 toolz==0.8.2
 tqdm==4.11.1
 ujson==1.35
+watson-developer-cloud==0.23.0
 Werkzeug==0.11.15

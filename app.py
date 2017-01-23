@@ -6,6 +6,8 @@ from spacy import en as SpacyModel
 
 from google.cloud import language as GoogleModel
 
+from watson_developer_cloud import AlchemyLanguageV1
+
 class GenericEngine:
     
     def parse_input(self, input):
