@@ -12,12 +12,16 @@
             <input id="model" type="checkbox" aria-hidden="true" class="c-dropdown__trigger">
             <ul class="c-dropdown u-text-small">
                 <li>
-                    <input type="radio" value="spacy" class="c-dropdown__trigger">
-                    <label class="c-dropdown__option model">Spacy</label>
+                    <input type="radio" class="c-dropdown__trigger">
+                    <label id="spacy" class="c-dropdown__option model">Spacy</label>
                 </li>
                 <li>
-                    <input type="radio" value="google" class="c-dropdown__trigger">
-                    <label class="c-dropdown__option model">Google</label>
+                    <input type="radio" class="c-dropdown__trigger">
+                    <label id="google"  class="c-dropdown__option model">Google</label>
+                </li>
+                <li>
+                    <input type="radio" class="c-dropdown__trigger">
+                    <label id="watson" class="c-dropdown__option model">Watson</label>
                 </li>
             </ul>
         </menu>
@@ -25,6 +29,7 @@
 
     <body>
         <div id="displacy"></div>
+        <div id="sentiment" class="c-input__field"></div>
         <div id="details" class="c-input__field"></div>
     </body>
 

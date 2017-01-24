@@ -6,9 +6,7 @@ $("#text_input").keyup(function(event){
 });
 
 $(".c-dropdown__option").click(function(elem) {
-	$(".model").each(function(index) {
-		$(this).css('color', 'white');
-	});
+	$("#".concat(engine)).css('color', 'white');
 	$(this).css('color', 'red');
 	$("#engine_label").text("Processing with : " + $(this).text());
 	engine = $(this).text().toLowerCase();
@@ -25,7 +23,7 @@ const displacy = new displaCy('http://localhost:4848', {
     arrowSpacing: 10,
     arrowWidth: 8,
     arrowStroke: 2,
-    wordSpacing: 40,
+    wordSpacing: 80,
     bg: "#272822"
 });
 
@@ -40,8 +38,15 @@ const parse = {
 };
 
 var engine = "spacy";
+$("#spacy").css('color', 'red');
 
-show_details = function(word, tokens) {
+show_sentiment = function(sentiment) {
+	console.log(JSON.stringify(sentiment, null, 2));
+	$("#sentiment").text(JSON.stringify(sentiment, null, 2));
+}
+
+show_details = function(word, parsed) {
+	var tokens = parsed.tokens;
 	$.each(tokens, function(index, token) {
 		if (token.text == word) {
 			console.log(token)
@@ -58,12 +63,15 @@ process = function() {
 			"input": text_to_process,
 			"engine": engine
 		}).then(function(parsed) {
-			console.log(parsed.data)
+			console.log(parsed.data);
 			displacy.render(parsed.data, {
 			    arrowSpacing: 50
 			});
+			if (parsed.data.sentiment) {
+				show_sentiment(parsed.data.sentiment);
+			}
 			$(".displacy-token").click(function() {
-				show_details(this.children[0].textContent, parsed.data.words)
+				show_details(this.children[0].textContent, parsed.data)
 			});
 		});
 	}
