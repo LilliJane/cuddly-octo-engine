@@ -1,5 +1,4 @@
 from os import environ
-from pprint import pprint
 from flask import Flask, render_template, url_for, jsonify, make_response, request, session
 
 from spacy import en as SpacyModel
@@ -45,7 +44,6 @@ class WatsonEngine(GenericEngine):
         self.tokens = list()
         self.sentiment = doc.get('docSentiment')
 
-        pprint(doc)
         for relation in doc.get('relations'):
             action = relation.get('action')
             object_ = relation.get('object')
@@ -100,7 +98,6 @@ class WatsonEngine(GenericEngine):
             return None
 
     def add_word(self, token):
-        print("WORD == ", token)
         return {
             "tag": token.get('type'),
             "text": token.get('text'),
@@ -196,4 +193,4 @@ def main():
 
 #### RUNNING THE APP
 if __name__ == '__main__':
-	app.run(host='127.0.0.1', port=4848, debug=True, use_reloader=True)
+	app.run(host='127.0.0.1', port=4848, debug=True, use_reloader=False)

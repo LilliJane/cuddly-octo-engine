@@ -41,15 +41,13 @@ var engine = "spacy";
 $("#spacy").css('color', 'red');
 
 show_sentiment = function(sentiment) {
-	console.log(JSON.stringify(sentiment, null, 2));
 	$("#sentiment").text(JSON.stringify(sentiment, null, 2));
 }
 
 show_details = function(word, parsed) {
-	var tokens = parsed.tokens;
+	var tokens = parsed.words;
 	$.each(tokens, function(index, token) {
 		if (token.text == word) {
-			console.log(token)
 			$("#details").text(JSON.stringify(token, null, 2))
 		}
 	});
@@ -64,6 +62,8 @@ process = function() {
 			"engine": engine
 		}).then(function(parsed) {
 			console.log(parsed.data);
+			$("sentiment").text("");
+			$("details").text("");
 			displacy.render(parsed.data, {
 			    arrowSpacing: 50
 			});
