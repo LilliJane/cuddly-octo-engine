@@ -7,7 +7,7 @@ from google.cloud import language as GoogleModel
 
 from watson_developer_cloud import AlchemyLanguageV1
 
-alchemy_language = AlchemyLanguageV1(api_key='584bb6cc4ec52f2fd73ec69332c4a4ef2cd3c7c6')
+alchemy_language = AlchemyLanguageV1(api_key='PUT_YOUR_OWN_KEY')
 
 class GenericEngine:
     
